@@ -7,7 +7,7 @@ CORE_NAME = "IRF21_BM25"
 AWS_IP = "localhost"
 
 
-#ojrenvjrenovjeriveuhi
+#TODO-remove after private access
 
 with open('train.json') as json_file:
   collection = json.load(json_file)
