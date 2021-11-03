@@ -187,7 +187,7 @@ class Indexer:
 
         print(requests.post(self.solr_url + CORE_NAME + "/schema", json=data).json())
 
-    def query_solr():
+    def query_solr(self):
         # change the url according to your own corename and query
         inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=*%3A*Syria&fl=id%2Cscore&wt=json&indent=true&rows=20'
         outfn = 'path_to_your_file.txt'
