@@ -189,14 +189,14 @@ class Indexer:
 
     def query_solr(self):
         # change the url according to your own corename and query
-        inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3ASyrian%20civil%20war%20text_de%3ASyrian%20civil%20war%20text_ru%3ASyrian%20civil%20war&fl=id%2Cscore&wt=json&indent=true&rows=20'
-        outfn = '2.txt'
+        inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch%20OR%20text_de%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch%20OR%20text_ru%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch&fl=id%2Cscore&wt=json&indent=true&rows=20'
+        outfn = '3_bm.txt'
 
         #inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_de%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_ru%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter&fl=id%2Cscore&wt=json&indent=true&rows=20'
 
 
         # change query id and IRModel name accordingly
-        qid = '1'
+        qid = '003'
         IRModel='bm25' #either bm25 or vsm
         outf = open(outfn, 'a+')
         # data = urllib2.urlopen(inurl)
