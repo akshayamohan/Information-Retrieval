@@ -189,14 +189,16 @@ class Indexer:
 
     def query_solr(self):
         # change the url according to your own corename and query
-        inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3ARussische%20Botschaft%20in%20Syrien%20von%20Granaten%20getroffen%20OR%20text_de%3ARussische%20Botschaft%20in%20Syrien%20von%20Granaten%20getroffen%20OR%20text_ru%3ARussische%20Botschaft%20in%20Syrien%20von%20Granaten%20getroffen&fl=id%2Cscore&wt=json&indent=true&rows=20'
-        outfn = '4_bm.txt'
+        inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году%20OR%20text_de%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году%20OR%20text_ru%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году&fl=id%2Cscore&wt=json&indent=true&rows=20'
+        outfn = '5_bm.txt'
+
+
 
         #inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_de%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_ru%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter&fl=id%2Cscore&wt=json&indent=true&rows=20'
 
 
         # change query id and IRModel name accordingly
-        qid = '004'
+        qid = '005'
         IRModel='bm25' #either bm25 or vsm
         outf = open(outfn, 'a+')
         # data = urllib2.urlopen(inurl)
@@ -215,12 +217,12 @@ class Indexer:
 if __name__ == "__main__":
     i = Indexer()
     # !!!!!!!!!!!! Important!!!!!!<<<<<<<<<<<<<<<<<<<<<--------------UNCOMMENT FINALLY------------------------------------>>>>>>>>>>>>>>>>>>>>
-    # i.do_initial_setup()
+    i.do_initial_setup()
 
-    # i.replace_BM25(b=0.8, k1=1.4)
+    i.replace_BM25(b=0.8, k1=1.4)
     
-    # i.add_fields()
+    i.add_fields()
 
-    # i.create_documents(collection)
+    i.create_documents(collection)
 
     i.query_solr()
