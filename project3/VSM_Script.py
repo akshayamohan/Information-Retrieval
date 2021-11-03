@@ -3,7 +3,7 @@ import pysolr
 import requests
 import json
 
-CORE_NAME = "IRF21_BM25"
+CORE_NAME = "IRF21_VSM"
 AWS_IP = "localhost"
 
 
