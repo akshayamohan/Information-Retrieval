@@ -3,6 +3,8 @@ import pysolr
 import requests
 import json
 
+import urllib.request
+
 CORE_NAME = "IRF21_VSM"
 AWS_IP = "localhost"
 
@@ -181,7 +183,7 @@ class Indexer:
 
     def query_solr(self):
         # change the url according to your own corename and query
-        inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch%20OR%20text_de%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch%20OR%20text_ru%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch&fl=id%2Cscore&wt=json&indent=true&rows=20'
+        inurl = 'http://localhost:8983/solr/IRF21_VSM/select?q=text_en%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch%20OR%20text_de%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch%20OR%20text_ru%3AAssad%20und%20ISIS%20auf%20dem%20Vormarsch&fl=id%2Cscore&wt=json&indent=true&rows=20'
         outfn = '3_vsm.txt'
 
         #inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_de%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_ru%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter&fl=id%2Cscore&wt=json&indent=true&rows=20'
