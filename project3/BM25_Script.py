@@ -3,6 +3,8 @@ import pysolr
 import requests
 import json
 
+import urllib.request 
+
 CORE_NAME = "IRF21_BM25"
 AWS_IP = "localhost"
 
@@ -185,13 +187,38 @@ class Indexer:
 
         print(requests.post(self.solr_url + CORE_NAME + "/schema", json=data).json())
 
+    def query_solr():
+        # change the url according to your own corename and query
+        inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=*%3A*Syria&fl=id%2Cscore&wt=json&indent=true&rows=20'
+        outfn = 'path_to_your_file.txt'
+
+
+        # change query id and IRModel name accordingly
+        qid = '1'
+        IRModel='bm25' #either bm25 or vsm
+        outf = open(outfn, 'a+')
+        # data = urllib2.urlopen(inurl)
+        # if you're using python 3, you should use
+        data = urllib.request.urlopen(inurl)
+
+        docs = json.load(data)['response']['docs']
+        # the ranking should start from 1 and increase
+        rank = 1
+        for doc in docs:
+            outf.write(qid + ' ' + 'Q0' + ' ' + str(doc['id']) + ' ' + str(rank) + ' ' + str(doc['score']) + ' ' + IRModel + '\n')
+            rank += 1
+        outf.close()
+
 
 if __name__ == "__main__":
     i = Indexer()
-    i.do_initial_setup()
+    # !!!!!!!!!!!! Important!!!!!!<<<<<<<<<<<<<<<<<<<--------------UNCOMMENT FINALLY------------------------------------>>>>>>>>>>>>>>>>>>>>
+    # i.do_initial_setup()
 
     i.replace_BM25(b=0.8, k1=1.4)
     
     i.add_fields()
     # i.replace_fields()
     i.create_documents(collection)
+
+    i.query_solr()
