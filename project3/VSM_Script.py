@@ -183,7 +183,7 @@ class Indexer:
 
     def query_solr(self):
         # change the url according to your own corename and query
-        inurl = 'http://localhost:8983/solr/IRF21_VSM/select?q=text_en%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году%20OR%20text_de%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году%20OR%20text_ru%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году&fl=id%2Cscore&wt=json&indent=true&rows=20'
+        inurl = 'http://localhost:8983/solr/IRF21_VSM/select?q=text_en%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%201%205%20млн%20беженцев%20в%20этом%20году%20OR%20text_de%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году%20OR%20text_ru%3AБильд%20Внутренний%20документ%20говорит%20что%20Германия%20примет%20%31,%35%20млн%20беженцев%20в%20этом%20году&fl=id%2Cscore&wt=json&indent=true&rows=20'
         outfn = '5_vsm.txt'
 
         #inurl = 'http://localhost:8983/solr/IRF21_BM25/select?q=text_en%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_de%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter%20OR%20text_ru%3ADavid%20Cameron%20urged%20to%20ensure%20vulnerable%20Syrian%20refugees%20are%20settled%20by%20winter&fl=id%2Cscore&wt=json&indent=true&rows=20'
