@@ -221,4 +221,4 @@ if __name__ == "__main__":
 
     i.create_documents(collection)
 
-    i.query_solr()
+    # i.query_solr()
