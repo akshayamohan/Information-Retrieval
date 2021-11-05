@@ -30,7 +30,8 @@ core_names = ["IRF21_BM25", "IRF21_VSM"]
 def query_solr():
 
     print("inside new code")
-    with open('test-queries.txt') as fp:
+    # with open('test-queries.txt') as fp:
+    with open('queries.txt') as fp:
 
         for core in core_names:
             for line in fp:
