@@ -30,8 +30,8 @@ core_names = ["IRF21_BM25", "IRF21_VSM"]
 def query_solr():
 
     print("inside new code")
-    # with open('test-queries.txt') as fp:
-    with open('queries.txt') as fp:
+    with open('test-queries.txt') as fp:
+    # with open('queries.txt') as fp:
 
         for core in core_names:
             for line in fp:
@@ -42,7 +42,7 @@ def query_solr():
                 encoded_query = urllib.parse.quote(query)
 
                 inurl = 'http://localhost:8983/solr/' + core + '/select?fl=id%2Cscore&q=text_en%3A(' + encoded_query + ')%20or%20text_de%3A(' + encoded_query + ')%20or%20text_ru%3A(' + encoded_query + ')' + '&rows=20&wt=json'
-                outfn = str(int(query_id)) + '_' + core + '.txt'
+                outfn = 'test'+str(int(query_id)) + '_' + core + '.txt'
 
 
                 # change query id and IRModel name accordingly

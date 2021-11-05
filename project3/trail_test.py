@@ -7,9 +7,19 @@ import re
 import urllib
 import urllib.request
 
+from nltk.stem import PorterStemmer
+import re
+from nltk.corpus import stopwords
+import nltk
+nltk.download('stopwords')
+
 CORE_NAME = "IRF21_BM25"
 AWS_IP = "localhost"
+
 core_names = ["IRF21_BM25", "IRF21_VSM"]
+
+stop_words = set(stopwords.words('english'))
+ps = PorterStemmer()
 
 
 #TODO-remove after private access
@@ -202,7 +212,20 @@ class Indexer:
                     query = re.sub(r'[^\w\s]', ' ', query)
                     query = re.sub(' +', ' ', query)
                     query = query.strip()
+                    
+                    tokens = re.split("\s", text)
+
+                    processed_tokens = []
+
+                    for w in tokens:
+                        if w not in stop_words:
+                            ps_w = ps.stem(w)
+                            processed_tokens.append(ps_w)
+
+                    query = ' '.join(processed_tokens)
                     encoded_query = urllib.parse.quote(query)
+
+                    print(encoded_query)
 
                     inurl = 'http://localhost:8983/solr/' + core + '/select?fl=id%2Cscore&q=text_en%3A(' + encoded_query + ')%20or%20text_de%3A(' + encoded_query + ')%20or%20text_ru%3A(' + encoded_query + ')' + '&rows=20&wt=json'
                     outfn = str(int(query_id)) + '_' + core + '.txt'
@@ -234,7 +257,7 @@ if __name__ == "__main__":
     # !!!!!!!!!!!! Important!!!!!!<<<<<<<<<<<<<<<<<<<<<--------------UNCOMMENT FINALLY-------------------------->>>>>>>>>>>>>>>>>>>>
     i.do_initial_setup()
 
-    i.replace_BM25(b=0.8, k1=0.3)
+    i.replace_BM25(b=0.8, k1=0.4)
     
     i.add_fields()
 
