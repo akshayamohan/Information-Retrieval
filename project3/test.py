@@ -34,6 +34,7 @@ def query_solr():
     # with open('queries.txt') as fp:
 
         for core in core_names:
+            print('working on core: '+core)
             for line in fp:
                 query_id, query = line.split(' ', 1)
                 query = re.sub(r'[^\w\s]', ' ', query)
@@ -56,6 +57,8 @@ def query_solr():
                 # data = urllib2.urlopen(inurl)
                 # if you're using python 3, you should use
                 data = urllib.request.urlopen(inurl)
+
+                print('reponse received: '+ data)
 
                 docs = json.load(data)['response']['docs']
                 # the ranking should start from 1 and increase
