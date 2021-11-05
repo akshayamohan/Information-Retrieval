@@ -213,7 +213,7 @@ class Indexer:
                     query = re.sub(' +', ' ', query)
                     query = query.strip()
                     
-                    tokens = re.split("\s", text)
+                    tokens = re.split("\s", query)
 
                     processed_tokens = []
 
