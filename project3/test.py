@@ -28,6 +28,8 @@ core_names = ["IRF21_BM25", "IRF21_VSM"]
 # print(str(int('002')))
 
 def query_solr():
+
+        print("inside new code")
         with open('test-queries.txt') as fp:
             for line in fp:
                 query_id, query = line.split(' ', 1)
