@@ -37,8 +37,6 @@ def query_solr(core):
             query = query.strip()
             encoded_query = urllib.parse.quote(query)
 
-            print(encoded_query)
-
             inurl = 'http://localhost:8983/solr/' + core + '/select?fl=id%2Cscore&q=text_en%3A(' + encoded_query + ')%20or%20text_de%3A(' + encoded_query + ')%20or%20text_ru%3A(' + encoded_query + ')' + '&rows=20&wt=json'
             outfn = 'test'+str(int(query_id)) + '_' + core + '.txt'
 
@@ -49,15 +47,11 @@ def query_solr(core):
             else:
                 IRModel = 'vsm'
 
-            print(IRModel)
-
             # IRModel='bm25' #either bm25 or vsm
             outf = open(outfn, 'a+')
             # data = urllib2.urlopen(inurl)
             # if you're using python 3, you should use
             data = urllib.request.urlopen(inurl)
-
-            print('reponse received: '+ str(data))
 
             docs = json.load(data)['response']['docs']
             # the ranking should start from 1 and increase
