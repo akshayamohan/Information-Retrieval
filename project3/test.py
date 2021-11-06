@@ -29,12 +29,12 @@ core_names = ["IRF21_BM25", "IRF21_VSM"]
 
 def query_solr(core):
 
-    with open('queries.txt') as fp:
+    with open('test-queries.txt') as fp:
         for line in fp:
             query_id, query = line.split(' ', 1)
-            # query = re.sub(r'[^\w\s]', ' ', query)
-            # query = re.sub(' +', ' ', query)
-            # query = query.strip()
+            query = re.sub(r'[^\w\s]', ' ', query)
+            query = re.sub(' +', ' ', query)
+            query = query.strip()
             encoded_query = urllib.parse.quote(query)
 
             print(encoded_query)
